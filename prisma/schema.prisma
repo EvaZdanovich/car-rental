@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum CarType {
+  Sedan
+  SUV
+  Hatchback
+  Coupe
+  Kombi
+}
+
+enum Fuel {
+  LPG
+  Benzyna
+  Diesel
+  Hybryda
+  Elektryczny
+}
+
+model Car {
+  id                  Int @default(autoincrement()) @id
+  typeCar             CarType
+  brand               String
+  model               String
+  engine              Float  
+  year                Int
+  mileage             Int
+  fuel                Fuel?
+  color               String
+  image               String?
+}
+
+model User {
+  id                  Int @default(autoincrement()) @id
+  firstName           String
+  lastName            String
+  password            String
+  pesel               String @unique
+  adres               String
+  zipCode             Int
+  telefon             String
+  mail                String @unique
+
+}
+
+model Employee {
+  id                  Int @default(autoincrement()) @id
+  department          String
+  startWork           String
+  endWork             String?
+  firstName           String
+  lastName            String
+  password            String
+  pesel               String @unique
+  adres               String
+  zipCode             Int
+  telefon             String
+  mail                String @unique
+    isAdmin             Boolean?
+}

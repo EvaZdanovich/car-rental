@@ -1,0 +1,7 @@
+admin:
+    login:  admin@rentour.com
+    hasło:  qwerty
+    
+user:
+    login:  user@rentour.com
+    hasło: qwerty
